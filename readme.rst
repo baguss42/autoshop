@@ -1,3 +1,3 @@
 ###################
-autoshops development
+autoshop development
 ###################
