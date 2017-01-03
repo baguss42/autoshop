@@ -1,0 +1,207 @@
+*, *:before, *:after {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+.box-event-execution .bee-header .bee-title {
+    margin-bottom: 20px;
+}
+
+.box-event-execution .bee-header {
+    background-color: #edefed;
+    padding: 20px;
+    border-top: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+}
+
+.box-event-execution .bee-header .bee-group-subtitle {
+    font-family: calibre-medium;
+    margin: 0 20px;
+    font-size: 18px;
+}
+
+.box-event-execution .bee-header .bee-title h2 {
+    font-size: 28px;
+}
+
+.box-event-execution .bee-body {
+    border: 1px solid #dbdbdb;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.box-event-execution .bee-body .bee-body-top {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.box-event-execution .bee-body .bee-body-top .bee-number {
+    color: #ffffff;
+    background-color: #626262;
+    padding: 5px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+}
+
+.box-event-execution .bee-body .bee-body-center {
+    padding: 0 50px;
+}
+
+.x-scroll {
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-question {
+    margin-bottom: 35px;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer {
+    display: block;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-group {
+    display: inline-block;
+    width: 100%;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check {
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #dbdbdb;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check label input {
+    position: absolute;
+    display: none;
+}
+
+.ng-valid.ng-dirty {
+    border-color: #b3b93c;
+}
+
+input[type="radio"] {
+    margin: 4px 0 0;
+    line-height: normal;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+input[type="radio" i] {
+    -webkit-appearance: radio;
+    box-sizing: border-box;
+}
+
+input[type="radio" i], input[type="checkbox" i] {
+    background-color: initial;
+    margin: 3px 0.5ex;
+    padding: initial;
+    border: initial;
+}
+
+input, textarea, keygen, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 13.3333px Arial;
+}
+
+p {
+    margin: 0 0 10px;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check:hover, 
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check label div:hover {
+    background-color: #3cc4e5;
+    color: #ffffff;
+}
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check input:checked + div {
+    background-color: #3cc4e5;
+    color: #ffffff;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check label {
+    cursor: pointer !important;
+}
+
+label {
+    font-weight: normal;
+    font-family: calibre-regular;
+    font-size: 18px;
+    color: #757575;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check label .row .col-xs-1 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.box-event-execution .bee-body .bee-body-center .bee-answer .bee-option-check label {
+    float: left;
+    width: 100%;
+    margin: 0px;
+}
+

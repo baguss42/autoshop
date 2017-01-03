@@ -1,0 +1,45 @@
+/**
+ * Created by Ibnu on 19/11/2015.
+ */
+.text-blue {
+  color: #3cc4e5;
+}
+.text-green {
+  color: #b3b93c;
+}
+.text-red {
+  color: #fb4040;
+}
+.text-yellow {
+  color: #f5a623;
+}
+.text-orange {
+  color: #f89825 !important;
+}
+.text-grey-medium {
+  color: #acacac;
+}
+.text-dark {
+  color: #7b7c7c;
+}
+.text-black {
+  color: #1f1f1f;
+}
+.text-white-yellow {
+  color: #ffeca1 !important;
+}
+.textColoring-rg-black {
+  color: #1f1f1f;
+}
+.textColoring-rg-white {
+  color: #ffffff;
+}
+.textColoring-rg-blue {
+  color: #3cc4e5;
+}
+.textColoring-rg-red {
+  color: #fb4040;
+}
+.textColoring-rg-green {
+  color: #b3b93c;
+}
