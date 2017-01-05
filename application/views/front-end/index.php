@@ -12,7 +12,7 @@
     <meta name="keywords" content="">
 
     <title>
-        Obaju : e-commerce template
+        Autoshop
     </title>
 
     <meta name="keywords" content="">

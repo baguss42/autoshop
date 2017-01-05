@@ -3,15 +3,14 @@
 class Migrations extends CI_Controller {
 
 	public function index() {
-		$this->users();
-		$this->levels();
-		$this->list_of_values();
-		$this->cars();
-		$this->accesories();
-		$this->sessions();
-		$this->captcha();
-		$this->create_log_field();
-		// $this->prepare_data();
+		// $this->users();
+		// $this->levels();
+		// $this->list_of_values();
+		// $this->cars();
+		$this->accessories();
+		// $this->sessions();
+		// $this->captcha();
+		// $this->create_log_field();
 	}
 
 	/**
@@ -38,7 +37,7 @@ class Migrations extends CI_Controller {
 	}
 
 	/**
-	 * TRYOUT LEVELS
+	 * USER LEVELS
 	 */
 	private function levels() {
 		$this->db->query("DROP TABLE IF EXISTS `levels`");
@@ -52,7 +51,7 @@ class Migrations extends CI_Controller {
 	}
 
 	/**
-	 * SUBJECTS SETTINGS
+	 * LIST OF VALUES
 	 */
 	private function list_of_values() {
 		$this->db->query("DROP TABLE IF EXISTS `list_of_values`");
@@ -67,7 +66,7 @@ class Migrations extends CI_Controller {
 	}
 
 	/**
-	 * CLASSES
+	 * CARS
 	 */
 	private function cars() {
 		$this->db->query("DROP TABLE IF EXISTS `cars`");
@@ -86,11 +85,11 @@ class Migrations extends CI_Controller {
 	}
 
 	/**
-	 * MAJORS
+	 * ACCESSORIES
 	 */
-	private function accesories() {
-		$this->db->query("DROP TABLE IF EXISTS `accesories`");
-		$this->db->query("CREATE TABLE IF NOT EXISTS `accesories` (
+	private function accessories() {
+		$this->db->query("DROP TABLE IF EXISTS `accessories`");
+		$this->db->query("CREATE TABLE IF NOT EXISTS `accessories` (
 				`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				`name` VARCHAR(255) NOT NULL,
 				`category` VARCHAR(50) NULL,
@@ -103,7 +102,7 @@ class Migrations extends CI_Controller {
 	}
 
 	/**
-	 * SUBJECTS
+	 * ORDERS
 	 */
 	private function orders() {
 		$this->db->query("DROP TABLE IF EXISTS `orders`");
@@ -196,229 +195,4 @@ class Migrations extends CI_Controller {
 		}
 	}
 
-	/**
-	 * Create Dummy Data
-	 * @return Void
-	 */
-	public function prepare_data() {
-		require_once APPPATH .'third_party/autoload.php';
-		$faker = Faker\Factory::create();
-
-		// Classes
-		$classes = ['X', 'XI', 'XII'];
-		$fill_data = [];
-		foreach ($classes as $value) {
-			$fill_data[] = [
-				'name' => $value,
-				'note' => str_replace('.', '', $faker->sentence($nbWords = 3, $variableNbWords = true))
-			];
-		}
-		$this->db->truncate('classes');
-		$this->db->insert_batch('classes', $fill_data);
-
-		// Levels
-		$levels = ['Easy', 'Intermediate', 'Advance'];
-		$fill_data = [];
-		foreach ($levels as $value) {
-			$fill_data[] = [
-				'name' => $value,
-				'note' => str_replace('.', '', $faker->sentence($nbWords = 3, $variableNbWords = true))
-			];
-		}
-		$this->db->truncate('levels');
-		$this->db->insert_batch('levels', $fill_data);
-
-		// Majors
-		$majors = ['IPA', 'IPS', 'Bahasa'];
-		$fill_data = [];
-		foreach ($majors as $value) {
-			$fill_data[] = [
-				'name' => $value,
-				'note' => str_replace('.', '', $faker->sentence($nbWords = 3, $variableNbWords = true))
-			];
-		}
-		$this->db->truncate('majors');
-		$this->db->insert_batch('majors', $fill_data);
-
-		// Subjects
-		$subjects = ['Matematika (IPA)', 'Matematika (IPS)', 'Bahasa Inggris'];
-		$fill_data = [];
-		foreach ($subjects as $value) {
-			$fill_data[] = [
-				'name' => $value,
-				'note' => str_replace('.', '', $faker->sentence($nbWords = 3, $variableNbWords = true))
-			];
-		}
-		$this->db->truncate('subjects');
-		$this->db->insert_batch('subjects', $fill_data);
-
-		// Tryout Types
-		$tryout_types = ['Tryout I', 'Tryout II', 'Tryout III'];
-		$fill_data = [];
-		foreach ($tryout_types as $value) {
-			$fill_data[] = [
-				'name' => $value,
-				'note' => str_replace('.', '', $faker->sentence($nbWords = 3, $variableNbWords = true))
-			];
-		}
-		$this->db->truncate('tryout_types');
-		$this->db->insert_batch('tryout_types', $fill_data);
-
-		// Scholars
-		$scholars = ['Scholar I', 'Scholar II', 'Scholar III'];
-		$fill_data = [];
-		foreach ($scholars as $key => $value) {
-			$fill_data[] = [
-				'name' => $value,
-				'nominal' => 1500000 * ($key + 1),
-				'year' => date('Y') + $key,
-				'note' => str_replace('.', '', $faker->sentence($nbWords = 3, $variableNbWords = true))
-			];
-		}
-		$this->db->truncate('scholars');
-		$this->db->insert_batch('scholars', $fill_data);
-
-		// Tryout Settings
-		$years = ['2016', '2017', '2018'];
-		$tryout_types = $this->db->select('id')->get('tryout_types');
-		$levels = $this->db->select('id')->get('levels');
-		$fill_data = [];
-		foreach ($years as $year) {
-			foreach($tryout_types->result() as $tryout_type) {
-				foreach ($levels->result() as $level) {
-					$fill_data[] = [
-						'year' => $year,
-						'tryout_type_id' => $tryout_type->id,
-						'level_id' => $level->id,
-						'duration' => 120,
-						'start_date' => $year.'-12-01',
-						'end_date' => $year.'-12-31',
-					];
-				}
-			}
-		}
-		$this->db->truncate('tryout_settings');
-		$this->db->insert_batch('tryout_settings', $fill_data);
-
-		// Dummy Users
-		$fill_data = [];
-		for($i = 1; $i <= 100; $i++) {
-			$fill_data[] = [
-				'full_name' => $faker->name,
-				'birth_place' => $faker->city,
-				'birth_date' => $faker->date('Y-m-d'),
-				'email' => $faker->email,
-				'password' => password_hash('123', PASSWORD_BCRYPT),
-				'address' => $faker->address,
-				'city' => $faker->city,
-				'graduation_year' => 2016,
-				'phone' => $faker->tollFreePhoneNumber,
-				'city' => $faker->city,
-				'province' => $faker->city,
-				'postal_code' => $faker->postcode,
-				'school' => $faker->streetName,
-				'activation_key' => sha1($faker->email . $i),
-				'class_id' => 1,
-				'major_id' => 1,
-				'scholar_id' => null,
-				'is_active' => 'true',
-				'user_type' => 'student'
-			];
-		}
-		$this->db->truncate('users');
-		$this->db->insert_batch('users', $fill_data);
-
-		// Super Users
-		$fill_data = [
-			'password' => password_hash('softdev', PASSWORD_BCRYPT),
-			'full_name' => 'SoftDev',
-			'email' => 'pu-softdev@googlegroups.com',
-			'user_type' => 'super_user',
-			'activation_key' => sha1(md5('administrator'.time())),
-			'is_active' => 'true'
-		];
-		$this->db->insert('users', $fill_data);
-
-		// Question Banks
-		$subjects = $this->db->select('id')->get('subjects');
-		$levels = $this->db->select('id')->get('levels');
-		$fill_data = [];
-		foreach ($subjects->result() as $subject) {
-			foreach ($levels->result() as $level) {
-				for ($i=1; $i <= 20 ; $i++) {
-					$fill_data[] = [
-						'subject_id' => $subject->id,
-						'level_id' => $level->id,
-						'question' => str_replace('.', '', $faker->sentence($nbWords = 6, $variableNbWords = true))
-					];
-				}
-			}
-		}
-		$this->db->truncate('question_banks');
-		$this->db->insert_batch('question_banks', $fill_data);
-
-		// Question Options
-		$questions = $this->db->select('id')->get('question_banks');
-		$fill_data = [];
-		foreach ($questions->result() as $question) {
-			$is_answer = rand(1, 5);
-			for ($i=1; $i <=5 ; $i++) {
-				$fill_data[] = [
-					'question_id' => $question->id,
-					'name' => str_replace('.', '', $faker->sentence($nbWords = 6, $variableNbWords = true)),
-					'is_answer' => ($i == $is_answer ? 'true' : 'false')
-				];
-			}
-		}
-		$this->db->truncate('question_options');
-		$this->db->insert_batch('question_options', $fill_data);
-
-		// Subject Settings
-		$majors = $this->db->select('id')->get('majors');
-		$subjects = $this->db->select('id')->get('subjects');
-		$fill_data = [];
-		foreach ($majors->result() as $major) {
-			foreach ($subjects->result() as $subject) {
-				$fill_data[] = [
-					'major_id' => $major->id,
-					'subject_id' => $subject->id,
-					'num_questions' => 5
-				];
-			}
-		}
-		$this->db->truncate('subject_settings');
-		$this->db->insert_batch('subject_settings', $fill_data);
-
-		// Scholar Ssettings
-		$levels = $this->db->select('id')->get('levels');
-		$scholars = $this->db->select('id')->get('scholars');
-		$fill_data = [];
-		foreach ($levels->result() as $level) {
-			foreach ($scholars->result() as $scholar) {
-				$fill_data[] = [
-					'level_id' => $level->id,
-					'scholar_id' => $scholar->id,
-					'minimum_score' => rand(50, 100)
-				];
-			}
-		}
-		$this->db->truncate('scholar_settings');
-		$this->db->insert_batch('scholar_settings', $fill_data);
-
-		// Geneeral Settings
-		$this->db->truncate('general_settings');
-		$fill_data = [
-			[
-				'name' => 'ACTIVE_YEAR',
-				'value' => '2016',
-				'note' => 'Setting for current Year. Application Default is Current Year.'
-			],
-			[
-				'name' => 'MAX_YEAR_DIFF',
-				'value' => '1',
-				'note' => 'Maximum year differences from user\'s graduation year allowed to take the exam. nApplication Default is 1.'
-			]
-		];
-		$this->db->insert_batch('general_settings', $fill_data);
-	}
 }
