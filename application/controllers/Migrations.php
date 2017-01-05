@@ -3,14 +3,14 @@
 class Migrations extends CI_Controller {
 
 	public function index() {
-		// $this->users();
-		// $this->levels();
-		// $this->list_of_values();
-		// $this->cars();
+		$this->users();
+		$this->levels();
+		$this->list_of_values();
+		$this->cars();
 		$this->accessories();
-		// $this->sessions();
-		// $this->captcha();
-		// $this->create_log_field();
+		$this->sessions();
+		$this->captcha();
+		$this->create_log_field();
 	}
 
 	/**

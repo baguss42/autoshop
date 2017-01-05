@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
 
 		$this->data['title'] = 'Home';
 		$this->data['home'] = true;
+		$this->data['content'] = 'front-end/home';
 		$this->load->view('front-end/index', $this->data);
 		//$this->load->view('welcome_message');
 	}
