@@ -4,13 +4,13 @@ class Migrations extends CI_Controller {
 
 	public function index() {
 		$this->users();
-		$this->levels();
-		$this->list_of_values();
-		$this->cars();
-		$this->accessories();
-		$this->sessions();
-		$this->captcha();
-		$this->create_log_field();
+		// $this->levels();
+		// $this->list_of_values();
+		// $this->cars();
+		// $this->accessories();
+		// $this->sessions();
+		// $this->captcha();
+		// $this->create_log_field();
 	}
 
 	/**
@@ -24,9 +24,9 @@ class Migrations extends CI_Controller {
 				`birth_date` DATE NULL,
 				`email` VARCHAR(150) NOT NULL,
 				`password` VARCHAR(150) NOT NULL,
-				`address` VARCHAR(150) NOT NULL,
+				`address` VARCHAR(150) NULL,
 				`phone` VARCHAR(50) NULL,
-				`user_type` ENUM('super_user', 'admin', 'user') NOT NULL DEFAULT 'admin',
+				`user_type` ENUM('super_user', 'admin', 'user') NOT NULL DEFAULT 'user',
 				`activation_key` VARCHAR(100) NULL,
 				`is_active` ENUM('true', 'false') DEFAULT 'true',
 				`last_logged_in` DATETIME NULL,
